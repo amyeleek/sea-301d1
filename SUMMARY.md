@@ -19,12 +19,16 @@ Week 2 daytime track (Weeks 3-4 nights & weekend) the MODEL:
 
 Week 3 daytime track (Weeks 5-6 nights & weekend track) the CONTROLLER:
 
-* [AJAX](class-11)
-* [REST](class-12-routing-wrrc)
-* [APIs](class-13-rest)
-* [APIs](class-14-apis)
-* [Recap and Pair Project 3](class-15-putting-it-together)
+* [Routing and Web Requests](class-11-routing-wrrc)
+* [REST and APIs](class-12-REST-and-APIs)
+* [Production Deployment](class-13-production-deployment)
+* [Managing Application State](class-14-managing-state)
+* [Project Week Kickoff!](class-15-putting-it-together)
 
-Week 4 daytime track (Weeks 7-8 nights & weekend track):
+Week 4 daytime track (Weeks 7-8 nights & weekend track) Project Week and Presentations:
 
-* Project Week and Presentations
+* [Milestone 1](class-16-project-week-day-1)
+* [Milestone 2](class-17-project-week-day-2)
+* [Milestone 3](class-18-project-week-day-3)
+* [Milestone 4](class-19-project-week-day-4)
+* [Milestone 5](class-20-project-week-day-5)
