@@ -14,7 +14,15 @@ A simple Node server (built with the Express framework) will help us meet these 
  1. It's already configured to reply with `index.html` to any request that doesn't match an existing file.
  - It's ready to make requests to the GitHub API on behalf of the client app.
 
-To accomplish this second item, our web server is acting as an "http proxy", that will make requests for the client code, and return the result. The advantage is that if these requests are done server-side, then our secret tokens can safely be included with the request, with no concern of them getting exposed to end users. The details of how this all works is unimportant at this time. What you do need to know, is how to set an environment variable.
+To accomplish this second item, our web server is acting as an "http proxy", that will make requests for the client code, and return the result. The advantage is that if these requests are done server-side, then our secret tokens can safely be included with the request, with no concern of them getting exposed to end users. The details of how this all works is unimportant at this time. What you do need to know, is how to install the server dependencies and set an environment variable.
+
+## Server Dependencies
+
+Our custom server is built with the Express Framework and requires the installation of some software (dependencies) to run. Helpfully, the provided [package.json](https://github.com/codefellows/sea-301d1/blob/master/class-13-production-deployment/lecture-code/blog/package.json) contains all the configuration we need. Complete the following to install the server dependencies and enable the server to run.
+
+1. Make sure the [server.js](https://github.com/codefellows/sea-301d1/blob/master/class-13-production-deployment/lecture-code/blog/server.js) file and [package.json](https://github.com/codefellows/sea-301d1/blob/master/class-13-production-deployment/lecture-code/blog/package.json) are located in your project root folder.
+2. Run the command `npm install`, which will read the package.json file and install the necessary dependencies.
+3. Your server can now be run with the command `node server.js`, but first we should set up the environment variable to hold the GitHub token.
 
 ## Environment Variables
 
