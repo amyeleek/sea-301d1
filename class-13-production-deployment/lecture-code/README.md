@@ -22,7 +22,7 @@ Our custom server is built with the Express Framework and requires the installat
 
 1. Make sure the [server.js](https://github.com/codefellows/sea-301d1/blob/master/class-13-production-deployment/lecture-code/blog/server.js) file and [package.json](https://github.com/codefellows/sea-301d1/blob/master/class-13-production-deployment/lecture-code/blog/package.json) are located in your project root folder.
 2. Run the command `npm install`, which will read the package.json file and install the necessary dependencies.
-3. Your server will can now be run with the command `node server.js`, but first we should set up the environment variable to hold the GitHub token.
+3. Your server can now be run with the command `node server.js`, but first we should set up the environment variable to hold the GitHub token.
 
 ## Environment Variables
 
