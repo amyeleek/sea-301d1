@@ -47,7 +47,7 @@ Here are some tips on how to organize your team during the launch phase.
       * Navigating the coding of the initial scaffolding phase.
       * Staying one-step ahead of the Launch Driver by researching unfamiliar technology.
  * Once everyone is in agreement, here's how to launch a new  project.
-      * Build a basic file scaffold from scratch as a team.
+      * Build a basic file scaffold from scratch **as a team**.
       * Initialize a new git repository.
       * Push it to GitHub and [add your team members as Collaborators](https://help.github.com/articles/adding-collaborators-to-a-personal-repository/).
       * Deploy it to Heroku and [add your team members as Collaborators](https://devcenter.heroku.com/articles/sharing).
