@@ -1,5 +1,20 @@
 # Class 17 -  Project Week: Milestone 2
-## Development
+## Development phase
+
+Now that your project is launched, here's how to organize the development efforts of your team:
+
+* Use [GitHub Issues](https://guides.github.com/features/issues/)  to manage and divide up the work between your team members.
+* Create new issues that'll take approximately 30 minutes to 2 hours to complete.
+* Use labels and milestones as your team sees fit, but leave all newly created issues **unassigned**.
+* Assign an issue to yourself when you commit to working on it.
+* Once assigned, create a branch using the following naming scheme:
+ * Imagine issue #1 is titled "Add an about.html page".
+ * The branch name would be 1_add_about_page.
+ * Push the commits on your branch to GitHub regularly.
+ * Create a Pull Request for your branch even if you're unsure if it'll be merged into master.
+ * Ask someone else on your team to review the code in your Pull Request.
+ * If changes are required, make them on your branch and push them to GitHub for another review.
+ * Once satisfied, let the reviewer merge your Pull Request. **Don't merge your own Pull Request.**
 
 This should be a huge day of productivity, with tons of code written and projects truly beginning to take shape. A few helpful safety tips:
 
