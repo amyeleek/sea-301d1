@@ -1,11 +1,11 @@
 # Assignment for Class 2 - jQuery and Events
 
-Today we will work on adding sigle-page tabs to the blog.  We will also add the ability to select articles by category or author name as a way to filter the view
+Today we will work on adding single-page tabs to the blog.  We will also add the ability to select articles by category or author name as a way to filter the view
 
 We will use jQuery events to make this happen.
 
 ## User Stories
-  1. As a reader, I want articles truncated to the first paragraph so that I can easily scroll though the whole list.
+  - As a reader, I want articles truncated to the first paragraph so that I can easily scroll though the whole list.
   - As a reader, I want to click the "Read On" button so that I can see the entire article.
   - As an author, I want my articles filtered by name so that readers can find all my posts.
   - As a reader, I want articles filterable by category so that I can read things that interest me.
@@ -13,7 +13,7 @@ We will use jQuery events to make this happen.
   - As a reader, I want the blog to use a little color, so that I can distinguish it from other pages.
 
 ## Technical Requirements and Grading Rubric
-  - Use event delegation whenever appropriate,
+  - Use event delegation whenever appropriate.
   - Make sure you aren't showing articles that are unpublished ("draft").
   - Add your filters to the Nav section.
   - Factor out any helper functions to a `Util` object, perhaps in a util.js file.
