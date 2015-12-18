@@ -5,7 +5,7 @@ Today we will work on adding single-page tabs to the blog.  We will also add the
 We will use jQuery events to make this happen.
 
 ## User Stories
-  - As a reader, I want articles truncated to the first paragraph so that I can easily scroll though the whole list.
+  1. As a reader, I want articles truncated to the first paragraph so that I can easily scroll though the whole list.
   - As a reader, I want to click the "Read On" button so that I can see the entire article.
   - As an author, I want my articles filtered by name so that readers can find all my posts.
   - As a reader, I want articles filterable by category so that I can read things that interest me.
