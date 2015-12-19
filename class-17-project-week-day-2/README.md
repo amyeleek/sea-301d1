@@ -3,8 +3,8 @@
 
 Now that your project is launched, here's how to organize the development efforts of your team:
 
-* Use [GitHub Issues](https://guides.github.com/features/issues/)  to manage and divide up the work between your team members.
-* Create new issues that'll take approximately 30 minutes to 2 hours to complete.
+* Use [GitHub Issues](https://guides.github.com/features/issues/) or another project management tracker to manage and divide up the work between your team members.
+* Create new issues that'll take between 30 minutes - 4 hours to complete.
 * Use labels and milestones as your team sees fit, but leave all newly created issues **unassigned**.
 * Assign an issue to yourself when you commit to working on it.
 * Once assigned, create a branch using the following naming scheme:
