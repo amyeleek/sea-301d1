@@ -30,7 +30,7 @@ function processTable(){
   console.log(
     data
       .split('<tr>')
-      .slice(1)
+      .slice(1)   // take everything in the array but the first one (zero-th index)
   );
 
   // now let's process each row
