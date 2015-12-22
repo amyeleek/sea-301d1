@@ -24,6 +24,9 @@ Let these user stories guide your development:
   - Your blog should end up looking [something like this](http://hijk.it/image/1l402M1Y0q3K/Screen%20Shot%202015-11-23%20at%2012.19.46%20PM.png).
 
 ## Helpful Resources
+ - Watch these videos on Agile Software Development:
+  - https://www.youtube.com/watch?v=OJflDE6OaSc  
+  - https://www.youtube.com/watch?v=XU0llRltyFM 
  - jQuery Cheat sheet: http://oscarotero.com/jquery/
  - jQuery "Basics" course: https://teamtreehouse.com/library/jquery-basics
  -
