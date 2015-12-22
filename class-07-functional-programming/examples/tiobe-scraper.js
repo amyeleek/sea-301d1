@@ -94,7 +94,7 @@ steps[5] = function step5() {
   // up in rank
 
 steps[6] = function step6() {
-  $('textarea[name=output]').text(
+  var newData =
     data
       .split('<tr>')
       .slice(1)
@@ -119,8 +119,8 @@ steps[6] = function step6() {
           });
         }
         return acc;
-      }, [])
-  );
+      }, []);
+  $('textarea[name=output]').text(JSON.stringify(newData, null, '  '));
 };
 
 $('.step-buttons').append(
@@ -143,4 +143,8 @@ $('input[name=submit]').on('click', function(e){
   e.preventDefault();
   var processor = new Function(code_editor.getValue());
   processor();
+});
+
+$('button#clear').on('click',function(e){
+  $('textarea[name=output]').text('');
 });

@@ -4,6 +4,15 @@
   <meta charset="UTF-8">
   <title>TIOBE Scraper</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+  <style>
+    .code-area {
+      width: 100%
+    }
+
+    .code-editor {
+      height: 350px;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
@@ -26,16 +35,16 @@
       <div class="eight columns">
         <div>
           <label for="input">Input</label>
-          <textarea name="input"  rows="20" cols="40" style="width: 100%"></textarea>
+          <textarea name="input" rows="20" cols="40" class="code-area"></textarea>
         </div>
         <div>
           <label for="code">Code</label>
-          <div id="code" style="height: 14em;">
+          <div id="code" class="code-editor">
           </div>
         </div>
         <div>
           <label for="output">Output</label>
-          <textarea name="output" rows="20" cols="40" style="width: 100%"></textarea>
+          <textarea name="output" rows="20" cols="40" class="code-area"></textarea>
         </div>
         <div>
         </div>
@@ -44,6 +53,7 @@
         <button id="prefill">fill with tiobe.html</button>
         <div class="step-buttons"></div>
         <input name="submit" type="submit" value="Process Data"></input>
+        <button id="clear">Clear output</button>
       </div>
     </div>
   </div>
