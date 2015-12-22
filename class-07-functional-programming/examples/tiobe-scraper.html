@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>TIOBE Scraper</title>
+  <!-- <link href="http://thomasf.github.io/solarized-css/solarized-dark.min.css" rel="stylesheet"></link> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
   <style>
     .code-area {
@@ -34,7 +35,7 @@
     <div class="row">
       <div class="eight columns">
         <div>
-          <label for="input">Input</label>
+          <label for="input">Input <small>&mdash; This will be stored in <code>var data</code></small></label>
           <textarea name="input" rows="20" cols="40" class="code-area"></textarea>
         </div>
         <div>
@@ -50,7 +51,7 @@
         </div>
       </div>
       <div class="four columns">
-        <button id="prefill">fill with tiobe.html</button>
+        <button id="prefill">fill input with tiobe.html</button>
         <div class="step-buttons"></div>
         <input name="submit" type="submit" value="Process Data"></input>
         <button id="clear">Clear output</button>
