@@ -1,43 +1,42 @@
-/*global data */
-/*eslint quotes: 0 */
+// Which programming languages have increased in rank recently?
+// We can find this data on the TIOBE index here:
+// http://www.tiobe.com/index.php/content/paperinfo/tpci/index.html
+
+// I've scraped the page and saved just the table rows for you in tiobe.html
+// This avoids a Cross Origin Resource sharing issue where you are not allowed to
+// $.get pages that are not on your domain
 
 // initialize the `data` variable here so, it has a global scope
-// so it can be called from Function objects
+// if we were being really careful we could wrap all this in an IIFE or module
 var data = '';
 
-$('#prefill').on('click', function preload(e) {
-  $.get('tiobe.html', function(response){
-    $('textarea[name=input]').text(response);
-    data = response;
-  });
-});
+$.get('tiobe.html', function(response){
+  // we take the response (text of tiobe.html) and assign it to data.
+  data = response;
+})
+  // and then we hand off to processTable when done
+  .done(processTable);
 
-// holds all the code we will walk through, step-by-step
-var steps = [];
+function processTable(){
+  // first we will just log the raw data
+  console.log(data);
 
-steps[0] = "\
-  // first we will just log the raw data\n\
-  $('textarea[name=output]').text(data);";
+  // first real step is to figure out the rows
+  // split will create an array of rows for us
+  console.log( data.split( '<tr>' ) );
 
-steps[1] = "\
-  // first real step is to figure out the rows\n\
-  // split will create an array of rows for us\n\
-  $('textarea[name=output]').text( data.split( '<tr>' ) );";
-
-steps[2] = "\
-  // the first result in the array of rows is an empty string, so\n\
-  // let's get rid of that\n\
-  $('textarea[name=output]').text(\
-    data\n\
-      .split('<tr>')\n\
-      .slice(1)   // take everything in the array but the first one (zero-th index)\n\
-  );";
+  // the first result in the array of rows is an empty string, so
+  // let's get rid of that
+  console.log(
+    data
+      .split('<tr>')
+      .slice(1)   // take everything in the array but the first one (zero-th index)
+  );
 
   // now let's process each row
   // we'll need to transform each row into something useful (like columns!)
   // a map applies a function to each element of an array, so that's what we want
-steps[3] = function step3() {
-  $('textarea[name=output]').text(
+  console.log(
     data
       .split('<tr>')
       .slice(1)
@@ -48,10 +47,8 @@ steps[3] = function step3() {
           .slice(0, -5);
       })
   );
-};
 
-steps[4] = function step4() {
-  $('textarea[name=output]').text(
+  console.log(
     data
       .split('<tr>')
       .slice(1)
@@ -67,14 +64,11 @@ steps[4] = function step4() {
           // columns of the table.
       })
   );
-};
 
   // the problem is that each column has a </td> in it. That's extraneous.
   // Let's get rid of it. We need to transform each element in an array, so
   // that is a map, again. This time for each colulmn.
-
-steps[5] = function step5() {
-  $('textarea[name=output]').text(
+  console.log(
     data
       .split('<tr>')
       .slice(1)
@@ -89,12 +83,11 @@ steps[5] = function step5() {
           });
       })
   );
-};
+
   // now we can answer our question about which programming languages have moved
   // up in rank
 
-steps[6] = function step6() {
-  $('textarea[name=output]').text(
+  console.log(
     data
       .split('<tr>')
       .slice(1)
@@ -121,26 +114,4 @@ steps[6] = function step6() {
         return acc;
       }, [])
   );
-};
-
-$('.step-buttons').append(
-  steps.map(function(step, i) {
-    var button = $('<button>Step ' + i + '</button>');
-    button.on('click', function(e) {
-      code_editor.setValue(steps[i].toString());
-    });
-    return button;
-  })
-);
-
-var code_editor = ace.edit('code');
-code_editor.getSession().setMode('ace/mode/javascript');
-code_editor.getSession().setTabSize(2);
-code_editor.getSession().setUseSoftTabs(true);
-code_editor.$blockScrolling = Infinity;
-
-$('input[name=submit]').on('click', function(e){
-  e.preventDefault();
-  var processor = new Function(code_editor.getValue());
-  processor();
-});
+}
