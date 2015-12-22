@@ -5,39 +5,41 @@
 // so it can be called from Function objects
 var data = '';
 
-$('#prefill').on('click', function preload(e) {
-  $.get('tiobe.html', function(response){
-    $('textarea[name=input]').text(response);
-    data = response;
-  });
-});
-
-// holds all the code we will walk through, step-by-step
+// STEPS holds all the code we will walk through, step-by-step
 var steps = [];
 
-steps[0] = "\
-  // first we will just log the raw data\n\
-  $('textarea[name=output]').text(data);";
+steps[0] = {
+  hint: "// first just log the raw data. It is in a variable named data.\n\
+// use jQuery's text method to set the value of the textarea named output\n\
+// click the process data button when ready to test\n\
+$('textarea[name=output]')\n",
+  answer: "$('textarea[name=output]').text(data);"
+};
 
-steps[1] = "\
-  // first real step is to figure out the rows\n\
-  // split will create an array of rows for us\n\
-  $('textarea[name=output]').text( data.split( '<tr>' ) );";
+steps[1] = {
+  hint: "// first real step is to figure out the rows\n\
+// split will create an array of rows for us\n\
+// split on the html for the row delimiter, <tr>\n",
+  answer: "$('textarea[name=output]').text( data.split( '<tr>' ) );"
+};
 
-steps[2] = "\
-  // the first result in the array of rows is an empty string, so\n\
-  // let's get rid of that\n\
-  $('textarea[name=output]').text(\
+steps[2] = {
+  hint: "// the first result in the array of rows is an empty string, so\n\
+// let's get rid of that\n",
+  answer: "$('textarea[name=output]').text(\n\
     data\n\
       .split('<tr>')\n\
       .slice(1)   // take everything in the array but the first one (zero-th index)\n\
-  );";
+  );"
+};
 
-  // now let's process each row
-  // we'll need to transform each row into something useful (like columns!)
-  // a map applies a function to each element of an array, so that's what we want
-steps[3] = function step3() {
-  $('textarea[name=output]').text(
+steps[3] = {
+  hint: "// now let's process each row\n\
+// we'll need to transform each row into something useful (like columns!)\n\
+// a map applies a function to each element of an array, so that's what we want\n\
+// make sure to invoke the step3(); at the end of the text area, it's not added for you automatically",
+  answer: function step3() {
+    $('textarea[name=output]').text(
     data
       .split('<tr>')
       .slice(1)
@@ -48,10 +50,14 @@ steps[3] = function step3() {
           .slice(0, -5);
       })
   );
+  }
 };
 
-steps[4] = function step4() {
-  $('textarea[name=output]').text(
+steps[4] = {
+  hint: "//now we need to split the row into columns\n\
+// what delimits a column in a table? a <td>",
+  answer: function step4() {
+    $('textarea[name=output]').text(
     data
       .split('<tr>')
       .slice(1)
@@ -67,14 +73,17 @@ steps[4] = function step4() {
           // columns of the table.
       })
   );
+  }
 };
 
-  // the problem is that each column has a </td> in it. That's extraneous.
-  // Let's get rid of it. We need to transform each element in an array, so
-  // that is a map, again. This time for each colulmn.
 
-steps[5] = function step5() {
-  $('textarea[name=output]').text(
+
+steps[5] = {
+  hint: "// the problem is that each column has a </td> in it. That's extraneous.\n\
+// Let's get rid of it. We need to transform each element in an array, so\n\
+// that is a map, again. This time for each colulmn.",
+  answer: function step5() {
+    $('textarea[name=output]').text(
     data
       .split('<tr>')
       .slice(1)
@@ -89,12 +98,15 @@ steps[5] = function step5() {
           });
       })
   );
+  }
 };
-  // now we can answer our question about which programming languages have moved
-  // up in rank
 
-steps[6] = function step6() {
-  var newData =
+
+steps[6] = {
+  hint: "// now we can answer our question about which programming languages have moved\n\
+// up in rank",
+  answer: function step6() {
+    var newData =
     data
       .split('<tr>')
       .slice(1)
@@ -120,24 +132,48 @@ steps[6] = function step6() {
         }
         return acc;
       }, []);
-  $('textarea[name=output]').text(JSON.stringify(newData, null, '  '));
+    $('textarea[name=output]').text(JSON.stringify(newData, null, '  '));
+  }
 };
 
+// end of steps definition
+
+
+// events
 $('.step-buttons').append(
   steps.map(function(step, i) {
-    var button = $('<button>Step ' + i + '</button>');
-    button.on('click', function(e) {
-      code_editor.setValue(steps[i].toString());
+    var questionAndAnswer = $('<div>');
+
+    var questionButton = $('<button>Step ' + i + '</button>');
+    questionButton.on('click', function(e) {
+      code_editor.setValue(steps[i].hint.toString());
+      $('#answer' + i).fadeIn(9000);
     });
-    return button;
+
+    var answerButton = $('<button id="answer' + i
+      + '" style="display: none">Answer '
+      + i
+      + '</button>');
+    answerButton.on('click', function(e) {
+      code_editor.setValue(steps[i].answer.toString());
+    });
+
+    questionAndAnswer.append([
+      questionButton,
+      " ",
+      answerButton
+    ]);
+
+    return questionAndAnswer;
   })
 );
 
-var code_editor = ace.edit('code');
-code_editor.getSession().setMode('ace/mode/javascript');
-code_editor.getSession().setTabSize(2);
-code_editor.getSession().setUseSoftTabs(true);
-code_editor.$blockScrolling = Infinity;
+$('#prefill').on('click', function prefill(e) {
+  $.get('tiobe.html', function(response){
+    $('textarea[name=input]').text(response);
+    data = response;
+  });
+});
 
 $('input[name=submit]').on('click', function(e){
   e.preventDefault();
@@ -148,3 +184,10 @@ $('input[name=submit]').on('click', function(e){
 $('button#clear').on('click',function(e){
   $('textarea[name=output]').text('');
 });
+
+// set up editor
+var code_editor = ace.edit('code');
+code_editor.getSession().setMode('ace/mode/javascript');
+code_editor.getSession().setTabSize(2);
+code_editor.getSession().setUseSoftTabs(true);
+code_editor.$blockScrolling = Infinity;
