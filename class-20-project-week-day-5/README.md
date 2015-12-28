@@ -26,15 +26,19 @@ Your grade is based on your individual effort and your project's technical merit
     * Well organized file structure.
  * **Good and proper use of JavaScript**
     * Clear, readable, and efficient code
-    * Uses domain models to encapsulate data and behavior
-    * Responds to user events and possibly AJAX events
-    * Uses 3rd party libraries like jQuery
+    * Model code that encapsulates the problem domain data and logic
+    * View code that presents model information and handles events
+    * Controller and router code that manages the flow of user requests
+    * Global variables and functions are kept to a minimum
+    * Responds to user events
+    * Properly leverages AJAX techniques
+    * Uses 3rd party libraries like jQuery consistently
     * Contains no unnecessary code
  * **Generally useful and functional**
     * Works as expected with no bugs
-    * Has at least 3 interlinked pages with a clear navigation
+    * Has at least 3 interlinked routes, with a clear navigation
     * Has at least two pages that accept and process user input
-    * State is persisted between page reloads
+    * State appears persisted between page reloads
     * Deployed live on the Internet
 
 ## Congratulations!
